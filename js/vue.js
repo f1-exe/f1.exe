@@ -95,7 +95,7 @@ Vue.component('navbar',{
             
             this.items[index].active = true;
             localStorage.setItem('datos-navbar', JSON.stringify(this.items));
-            console.log(this.items);
+            //console.log(this.items);
         }
     },
     created: function(){
@@ -118,7 +118,9 @@ Vue.component('futer',{
                     <div class="col-md-3">
                         <div class="ftco-footer-widget mb-4">
                             <h2 class="ftco-heading-2">F1.EXE</h2>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                            <p>
+                               Da el primer paso en ésta era digital de la mano de este gran equipo.  
+                            </p>
                         </div>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft ">
                             <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
@@ -140,27 +142,27 @@ Vue.component('futer',{
                         </div>
                         <div class="col-md-4 pr-md-4">
                         <div class="ftco-footer-widget mb-4">
-                            <h2 class="ftco-heading-2">Recent Blog</h2>
+                            <h2 class="ftco-heading-2">Trabajos recientes</h2>
                             <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                            <a class="blog-img mr-4" style="background-image: url(images/felmat_foo.jpg);"></a>
                             <div class="text">
-                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                                <div class="meta">
+                                <h3 class="heading"><a href="testimonios.html">Felmat Seguridad</a></h3>
+                                <!--<div class="meta">
                                 <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
                                 <div><a href="#"><span class="icon-person"></span> Admin</a></div>
                                 <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                                </div>
+                                </div>-->
                             </div>
                             </div>
                             <div class="block-21 mb-4 d-flex">
                             <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
                             <div class="text">
-                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                                <div class="meta">
+                                <h3 class="heading"><a href="testimonios.html">Nayer-Desayunos</a></h3>
+                                <!--<div class="meta">
                                 <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
                                 <div><a href="#"><span class="icon-person"></span> Admin</a></div>
                                 <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                                </div>
+                                </div>-->
                             </div>
                             </div>
                         </div>
