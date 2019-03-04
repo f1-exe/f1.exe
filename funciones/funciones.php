@@ -238,6 +238,19 @@ function insertarContacto($nombre, $email, $telefono, $mensaje){
   }
 }
 
+//insertar cotizaciones
+function insertarCotizacion($nombre,$email,$telefono,$tipo,$detalle){
+  global $conn;
+  $query = "INSERT INTO cotizacion (nombre, correo, telefono, tipo, detalle, fecha_registro) VALUES ('".$nombre."','".$email."',".$telefono.",".$tipo.",'".$detalle."',NULL)";
+  $resp = mysqli_query($conn, $query);
+
+  if($resp){
+    return true;
+  }else{
+    echo "NO".mysqli_error($conn);
+    return false;
+  }
+}
 
 
 function notificaciones(){

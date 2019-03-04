@@ -27,7 +27,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="./index.html">
+      <a class="navbar-brand pt-0" href="./index.php">
         <img src="./assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
@@ -55,19 +55,19 @@
             <div class=" dropdown-header noti-title">
               <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
-            <a href="./examples/profile.html" class="dropdown-item">
+            <a href="./examples/profile.php" class="dropdown-item">
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
             </a>
-            <a href="./examples/profile.html" class="dropdown-item">
+            <a href="./examples/profile.php" class="dropdown-item">
               <i class="ni ni-settings-gear-65"></i>
               <span>Settings</span>
             </a>
-            <a href="./examples/profile.html" class="dropdown-item">
+            <a href="./examples/profile.php" class="dropdown-item">
               <i class="ni ni-calendar-grid-58"></i>
               <span>Activity</span>
             </a>
-            <a href="./examples/profile.html" class="dropdown-item">
+            <a href="./examples/profile.php" class="dropdown-item">
               <i class="ni ni-support-16"></i>
               <span>Support</span>
             </a>
@@ -85,7 +85,7 @@
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="./index.html">
+              <a href="./index.php">
                 <img src="./assets/img/brand/blue.png">
               </a>
             </div>
@@ -111,37 +111,37 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="./index.html">
+            <a class="nav-link" href="./index.php">
               <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/icons.html">
+            <a class="nav-link" href="./examples/icons.php">
               <i class="ni ni-planet text-blue"></i> Icons
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/maps.html">
+            <a class="nav-link" href="./examples/maps.php">
               <i class="ni ni-pin-3 text-orange"></i> Maps
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/profile.html">
+            <a class="nav-link" href="./examples/profile.php">
               <i class="ni ni-single-02 text-yellow"></i> User profile
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/tables.html">
+            <a class="nav-link" href="./examples/tables.php">
               <i class="ni ni-bullet-list-67 text-red"></i> Tables
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/login.html">
+            <a class="nav-link" href="./examples/login.php">
               <i class="ni ni-key-25 text-info"></i> Login
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/register.html">
+            <a class="nav-link" href="./examples/register.php">
               <i class="ni ni-circle-08 text-pink"></i> Register
             </a>
           </li>
@@ -177,7 +177,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.php">Dashboard</a>
         <!-- Form -->
         <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
@@ -206,19 +206,19 @@
               <div class=" dropdown-header noti-title">
                 <h6 class="text-overflow m-0">Welcome!</h6>
               </div>
-              <a href="./examples/profile.html" class="dropdown-item">
+              <a href="./examples/profile.php" class="dropdown-item">
                 <i class="ni ni-single-02"></i>
                 <span>My profile</span>
               </a>
-              <a href="./examples/profile.html" class="dropdown-item">
+              <a href="./examples/profile.php" class="dropdown-item">
                 <i class="ni ni-settings-gear-65"></i>
                 <span>Settings</span>
               </a>
-              <a href="./examples/profile.html" class="dropdown-item">
+              <a href="./examples/profile.php" class="dropdown-item">
                 <i class="ni ni-calendar-grid-58"></i>
                 <span>Activity</span>
               </a>
-              <a href="./examples/profile.html" class="dropdown-item">
+              <a href="./examples/profile.php" class="dropdown-item">
                 <i class="ni ni-support-16"></i>
                 <span>Support</span>
               </a>
@@ -424,7 +424,7 @@
                   </tr>
                   <tr>
                     <th scope="row">
-                      /argon/index.html
+                      /argon/index.php
                     </th>
                     <td>
                       3,985
@@ -438,7 +438,7 @@
                   </tr>
                   <tr>
                     <th scope="row">
-                      /argon/charts.html
+                      /argon/charts.php
                     </th>
                     <td>
                       3,513
@@ -452,7 +452,7 @@
                   </tr>
                   <tr>
                     <th scope="row">
-                      /argon/tables.html
+                      /argon/tables.php
                     </th>
                     <td>
                       2,050
@@ -466,7 +466,7 @@
                   </tr>
                   <tr>
                     <th scope="row">
-                      /argon/profile.html
+                      /argon/profile.php
                     </th>
                     <td>
                       1,795

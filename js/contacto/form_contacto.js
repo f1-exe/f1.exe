@@ -42,10 +42,8 @@ jQuery("#btn_enviar").click(function (e) {
         return false;
     }
 
- 
-
     if(mensaje === ""){
-        MensajeAlerta("El campo <label style='color:red'><strong>¿Por qué deberías trabajar con nosotros?</strong></label> es obligatorio");
+        MensajeAlerta("El campo <label style='color:red'>Debes ingresar <strong>al menos un mensaje</strong></label> de contacto");
         return false;
     }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-02-2019 a las 01:56:45
+-- Tiempo de generación: 04-03-2019 a las 23:37:48
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.1
 
@@ -43,7 +43,33 @@ CREATE TABLE `contacto` (
 --
 
 INSERT INTO `contacto` (`id`, `nombre`, `correo`, `telefono`, `mensaje`, `estado`, `fecha_registro`) VALUES
-(1, 'Miguel', 'no.efects@hotmail.com', 75144189, 'asdasdasd asdada sdasd  Ã¡Ã¡Ã¡Ã¡Ã¡ Ã©Ã©Ã© ', 0, '2019-02-28 00:07:30');
+(1, 'Miguel', 'no.efects@hotmail.com', 75144189, 'asdasdasd asdada sdasd  Ã¡Ã¡Ã¡Ã¡Ã¡ Ã©Ã©Ã© ', 0, '2019-02-28 00:07:30'),
+(2, 'miguel marquez ', 'no.efects@hotmail.com', 123456789, 'asdasdasd asd asdas d', 0, '2019-02-28 21:40:13'),
+(3, 'miguel marquez', 'mikemreyes.mm@gmail.com', 975144189, 'hola', 0, '2019-03-04 21:07:59');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cotizacion`
+--
+
+CREATE TABLE `cotizacion` (
+  `id` int(11) NOT NULL,
+  `nombre` int(255) NOT NULL,
+  `correo` varchar(255) NOT NULL,
+  `telefono` int(11) NOT NULL,
+  `tipo` int(11) NOT NULL,
+  `detalle` varchar(3000) NOT NULL,
+  `estado` int(11) NOT NULL DEFAULT '0',
+  `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `cotizacion`
+--
+
+INSERT INTO `cotizacion` (`id`, `nombre`, `correo`, `telefono`, `tipo`, `detalle`, `estado`, `fecha_registro`) VALUES
+(1, 0, 'no.efects@hotmail.com', 123456789, 2, 'hola hola', 0, '2019-03-04 22:37:28');
 
 -- --------------------------------------------------------
 
@@ -69,6 +95,12 @@ ALTER TABLE `contacto`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `cotizacion`
+--
+ALTER TABLE `cotizacion`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -82,6 +114,12 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `cotizacion`
+--
+ALTER TABLE `cotizacion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
