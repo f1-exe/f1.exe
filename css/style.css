@@ -9166,3 +9166,44 @@ textarea.form-control {
   border: none;
   border-bottom: 1px solid #e6e6e6;
 }
+
+
+
+/*media queries para la foto del index de la seccion algunos de nuestros servicios*/
+@media (max-width: 320px){
+/* CSS that should be displayed if width is equal to or less than 800px goes here */
+
+  .height-img{
+    height: 250px;
+  }
+
+}
+
+/*
+@media only screen and (orientation: landscape) {
+  .landscape{
+    height: 250px;
+  }
+
+}
+*/
+
+@media (max-width: 375px) {
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
+  
+    .height-img{
+      height: 250px;
+    }
+  
+  }
+
+@media (max-width: 425px) {
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
+  
+    .height-img{
+      height: 250px;
+    }
+  
+  }
+/*media queries para la foto del index de la seccion algunos de nuestros servicios*/
+
