@@ -35,7 +35,8 @@ Vue.component('modal',{
                                             <option value="0">Tipo servicio</option>
                                             <option value="1">Desarrollo web</option>
                                             <option value="2">Audiovisual</option>
-                                            <option value="3">Gestion Web</option>                                      
+                                            <option value="3">Gestion Web</option>
+                                            <option value="4">Más de un servicio</option>                                      
                                         </select>
                                     </div>
                               </div>
