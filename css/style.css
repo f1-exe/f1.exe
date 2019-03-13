@@ -9167,7 +9167,10 @@ textarea.form-control {
   border-bottom: 1px solid #e6e6e6;
 }
 
-
+.imagen-responsive{
+  width: 100%;
+  height: auto;
+}
 
 /*media queries para la foto del index de la seccion algunos de nuestros servicios*/
 @media (max-width: 320px){
@@ -9178,32 +9181,3 @@ textarea.form-control {
   }
 
 }
-
-/*
-@media only screen and (orientation: landscape) {
-  .landscape{
-    height: 250px;
-  }
-
-}
-*/
-
-@media (max-width: 375px) {
-  /* CSS that should be displayed if width is equal to or less than 800px goes here */
-  
-    .height-img{
-      height: 250px;
-    }
-  
-  }
-
-@media (max-width: 425px) {
-  /* CSS that should be displayed if width is equal to or less than 800px goes here */
-  
-    .height-img{
-      height: 250px;
-    }
-  
-  }
-/*media queries para la foto del index de la seccion algunos de nuestros servicios*/
-

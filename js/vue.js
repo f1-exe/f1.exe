@@ -163,7 +163,7 @@ Vue.component('futer',{
                             <div class="block-21 mb-4 d-flex">
                             <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
                             <div class="text">
-                                <h3 class="heading"><a href="testimonios.html">Nayer-Desayunos</a></h3>
+                                <h3 class="heading"><a href="testimonios.html">Desayunos estilo gourmet</a></h3>
                                 <!--<div class="meta">
                                 <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
                                 <div><a href="#"><span class="icon-person"></span> Admin</a></div>
