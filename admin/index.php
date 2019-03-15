@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+$now = time();
+
+if(isset($_SESSION["expire"]) || empty($_SESSION["expire"]) == false){
+  if ($now > $_SESSION['expire']) {
+    session_unset();
+    session_destroy();
+    header("location: index.php");
+  }
+}
+
+$usuario = "";
+
+if(isset($_SESSION["session_usuario"]) || empty($_SESSION["session_usuario"]) == false){
+  $usuario = $_SESSION["session_usuario"];
+}
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,9 +36,20 @@
   <link href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="./assets/css/argon.css?v=1.0.0" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/animate.css">
+
+  <!-- SWAL CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.33.1/dist/sweetalert2.all.min.js"></script>
+
+  <script src="examples/js/logout.js"></script>
 </head>
 
 <body>
+  <input id="session" type="hidden" value="<?php echo $usuario;?>">
+  <script>
+    validaSesion();
+  </script>
   <!-- Sidenav -->
   <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
@@ -72,7 +103,7 @@
               <span>Support</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#!" class="dropdown-item">
+            <a href="#" onclick="logout()" class="dropdown-item">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>
@@ -223,7 +254,7 @@
                 <span>Support</span>
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#!" class="dropdown-item">
+              <a href="#" onclick="logout()" class="dropdown-item">
                 <i class="ni ni-user-run"></i>
                 <span>Logout</span>
               </a>
@@ -639,6 +670,7 @@
   <script src="./assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="./assets/js/argon.js?v=1.0.0"></script>
+  <script src="examples/js/logout.js"></script>
 </body>
 
 </html>

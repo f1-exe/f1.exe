@@ -18,76 +18,8 @@ function getCaptcha($secreKey){
 }
 
 
-//Se valida si el usuario se encuentra registrado en la BD
-function validaUsuario($usuario){
-  global $conn;
-  $usu = "";
-  $query = "SELECT usuario FROM usuario WHERE usuario = '".$usuario."'";
-  $resp = mysqli_query($conn, $query);
-
-  while($row = mysqli_fetch_row($resp)){
-    $usu = $row[0];
-  }
-
-  if($usu === $usuario){
-    return true;
-  }else{
-    return false;
-  }
-
-}
-
-//Se valida clave del usuario al momento de loguearse
-function validaClave($usuario, $clave){
-  global $conn;
-  $pass="";
-  $query = "SELECT clave FROM usuario WHERE usuario = '".$usuario."'";
-  $resp = mysqli_query($conn, $query);
-
-  while($row = mysqli_fetch_row($resp)){
-    $pass = $row[0];
-  }
-
-  if($clave === $pass){
-    return true;
-  }else{
-    return false;
-  }
-
-}
-
-
-
-//Obtiene nombre del Usuario
-
+//funcion de correo
 function enviarCorreo($mail_user, $nombre, $asunto, $tipo , $noti){
-
-  //$texto_opcional =  utf8_decode($texto_opcional);
-
-  /*switch ($tipo) {
-
-      case 1: $mensaje = 'Gracias por registrate!';
-
-          break;
-
-      case 2: $mensaje = 'Estimado : '.$nombre.'<br>
-
-            Su nueva clave para ingresar es: <br> <h1><b><strong><center>'.$texto_opcional.'</center></strong></b></h1> <br>
-
-            Una vez que entres no olvides cambiar la clave por una que te sea facil de recordar.
-
-                      <br>
-
-                       Saludos,<br>
-
-                       Equipo </F1.EXE> ';
-
-          break;
-
-  }*/
-
-
-
   require_once 'lib/sm/lib/swift_required.php';
 
   $pEmailGmail = 'contacto@felmatseguridad.cl';
@@ -181,6 +113,7 @@ function enviarCorreo($mail_user, $nombre, $asunto, $tipo , $noti){
   }
 
 }
+
 
 
 //obtener nombre de usuario
