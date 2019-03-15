@@ -147,16 +147,6 @@ if(isset($_SESSION["session_usuario"]) || empty($_SESSION["session_usuario"]) ==
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/contactos.php">
-              <i class="ni ni-bullet-list-67 text-red"></i> Contactos
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./examples/cotizaciones.php">
-              <i class="ni ni-bullet-list-67 text-red"></i> Cotizaciones
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="./examples/icons.php">
               <i class="ni ni-planet text-blue"></i> Icons
             </a>

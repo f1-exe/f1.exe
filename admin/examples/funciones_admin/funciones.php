@@ -39,4 +39,24 @@ function validaUsuario($usuario){
   
   }
 
+  //listar los contactos de la pagina
+  function listarContactos(){
+    global $conn;
+    $query = "SELECT * FROM contacto";
+    $resp =  mysqli_query($conn,$query);
+
+    return $resp;
+
+  }
+
+  //listar las cotizaciones hechas 
+  function listarCotizaciones(){
+    global $conn;
+    $query = "SELECT * FROM cotizacion";
+    $resp =  mysqli_query($conn,$query);
+    
+    return $resp;
+
+  }
+
 ?>
