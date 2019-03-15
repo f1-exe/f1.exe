@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-03-2019 a las 23:37:48
+-- Tiempo de generación: 16-03-2019 a las 00:38:49
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.1
 
@@ -55,7 +55,7 @@ INSERT INTO `contacto` (`id`, `nombre`, `correo`, `telefono`, `mensaje`, `estado
 
 CREATE TABLE `cotizacion` (
   `id` int(11) NOT NULL,
-  `nombre` int(255) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
   `correo` varchar(255) NOT NULL,
   `telefono` int(11) NOT NULL,
   `tipo` int(11) NOT NULL,
@@ -69,7 +69,10 @@ CREATE TABLE `cotizacion` (
 --
 
 INSERT INTO `cotizacion` (`id`, `nombre`, `correo`, `telefono`, `tipo`, `detalle`, `estado`, `fecha_registro`) VALUES
-(1, 0, 'no.efects@hotmail.com', 123456789, 2, 'hola hola', 0, '2019-03-04 22:37:28');
+(1, 'Mike M', 'no.efects@hotmail.com', 123456789, 2, 'hola hola', 0, '2019-03-04 22:37:28'),
+(2, 'Sebastian vasquez', 'svasquez.music@gmail.com', 123456789, 2, 'Necesito diseñar el logo de mi empresa y arreglar unos diseños de la pagina.', 0, '2019-03-15 23:16:23'),
+(3, 'usuario 1', 'usuario1@usuario1.cl', 987654321, 3, 'necesito implementar google analitycs en mi pagina por favor ayuda', 0, '2019-03-15 23:17:52'),
+(4, 'usuario2', 'usuario2@usuario2.cl', 987654321, 4, 'necesito diseño y pagina web', 0, '2019-03-15 23:17:52');
 
 -- --------------------------------------------------------
 
@@ -79,10 +82,17 @@ INSERT INTO `cotizacion` (`id`, `nombre`, `correo`, `telefono`, `tipo`, `detalle
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL,
+  `usuario` varchar(255) NOT NULL,
+  `clave` varchar(255) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `usuario`, `clave`, `fecha_registro`) VALUES
+(1, 'admin', 'f1.exe2019', '2019-03-15 18:24:53');
 
 --
 -- Índices para tablas volcadas
@@ -120,13 +130,13 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `cotizacion`
 --
 ALTER TABLE `cotizacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
