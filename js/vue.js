@@ -123,7 +123,12 @@ Vue.component('futer',{
                 <div class="row mb-5">
                     <div class="col-md-3">
                         <div class="ftco-footer-widget mb-4">
-                            <h2 class="ftco-heading-2">F1.EXE</h2>
+                            <h2 class="ftco-heading-2">
+                            <div>
+                              <img src="images/dashboard/F1-footer.png"  class="responsive">
+                            </div>
+                            
+                            </h2>
                             <p>
                                Da el primer paso en ésta era digital de la mano de este gran equipo.  
                             </p>
