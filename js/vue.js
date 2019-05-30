@@ -125,7 +125,7 @@ Vue.component('futer',{
                         <div class="ftco-footer-widget mb-4">
                             <h2 class="ftco-heading-2">
                             <div>
-                              <img src="images/dashboard/F1-footer.png"  class="responsive">
+                              <img src="https://www.f1puntoexe.cl/images/dashboard/F1-footer.png"  class="responsive" alt="f1 punto exe logo">
                             </div>
                             
                             </h2>
@@ -155,7 +155,7 @@ Vue.component('futer',{
                         <div class="ftco-footer-widget mb-4">
                             <h2 class="ftco-heading-2">Trabajos recientes</h2>
                             <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url(images/felmat_foo.jpg);"></a>
+                            <a class="blog-img mr-4" style="background-image: url(https://www.f1puntoexe.cl/images/felmat_foo.jpg);"></a>
                             <div class="text">
                                 <h3 class="heading"><a href="testimonios.html">Felmat Seguridad</a></h3>
                                 <!--<div class="meta">
@@ -166,7 +166,7 @@ Vue.component('futer',{
                             </div>
                             </div>
                             <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+                            <a class="blog-img mr-4" style="background-image: url(https://www.f1puntoexe.cl/images/image_2.jpg);"></a>
                             <div class="text">
                                 <h3 class="heading"><a href="testimonios.html">Desayunos estilo gourmet</a></h3>
                                 <!--<div class="meta">
@@ -185,7 +185,7 @@ Vue.component('futer',{
                                 <ul>
                                     <li><span class="icon icon-map-marker"></span><span class="text">Río Madeira 1259, Conchalí, Santiago, Chile</span></li>
                                     <li><a href="tel://+56975144189"><span class="icon icon-phone"></span><span class="text">+56 9 7514 4189</span></a></li>
-                                    <li><a href="mailto:contactof1.exe@gmail.com"><span class="icon icon-envelope"></span><span class="text">contactof1.exe@gmail.com</span></a></li>
+                                    <li><a href="mailto:contacto@f1puntoexe.cl"><span class="icon icon-envelope"></span><span class="text">contacto@f1puntoexe.cl</span></a></li>
                                 </ul>
                             </div>
                         </div>
