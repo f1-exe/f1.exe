@@ -166,7 +166,7 @@ Vue.component('futer',{
                             </div>
                             </div>
                             <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url(https://www.f1puntoexe.cl/images/image_2.jpg);"></a>
+                            <a class="blog-img mr-4" style="background-image: url(https://www.f1puntoexe.cl/images/deg-logo-footer.jpg);"></a>
                             <div class="text">
                                 <h3 class="heading"><a href="testimonios.html">Desayunos estilo gourmet</a></h3>
                                 <!--<div class="meta">
