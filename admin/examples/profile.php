@@ -288,20 +288,22 @@
               </div>
               <div class="text-center">
                 <h3>
-                  Jessica Jones<span class="font-weight-light">, 27</span>
+                  F1.exe<span class="font-weight-light"></span>
                 </h3>
                 <div class="h5 font-weight-300">
-                  <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                  <i class="ni location_pin mr-2"></i>"Nosotros te ayudamos, tú lo ejecutas"
                 </div>
                 <div class="h5 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                  <i class="ni business_briefcase-24 mr-2"></i>Gerentes
                 </div>
                 <div>
-                  <i class="ni education_hat mr-2"></i>University of Computer Science
+                  <!-- <i class="ni education_hat mr-2"></i> -->
+                    Sebastián Vásquez <br>
+                    Miguel Márquez
                 </div>
                 <hr class="my-4" />
-                <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
-                <a href="#">Show more</a>
+                <p>Queremos acercar la tecnología y el mundo de la informática a las personas comunes y corrientes, creemos que hay una deuda pendiente entre la informática y las personas. Hemos visto muchas veces que negocios desean herramientas web pero no saben dónde y cómo hallarlas. Nuestra misión es darle una mano a todos aquellos que quieran ser amigos de los servicios informáticos.</p>
+                <a href="#">Ver más</a>
               </div>
             </div>
           </div>
