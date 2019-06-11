@@ -124,7 +124,7 @@ $contactos =  listarContactos();
          <!-- Navigation -->
          <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="./index.php">
+            <a class="nav-link" href="../index.php">
               <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
@@ -144,7 +144,7 @@ $contactos =  listarContactos();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="proyectos.php">
               <i class="ni ni-archive-2 text-orange"></i> Proyectos
             </a>
           </li>
@@ -154,7 +154,7 @@ $contactos =  listarContactos();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.php">
+            <a class="nav-link" href="#">
               <i class="ni ni-single-copy-04 text-info"></i> Generar Cotización
             </a>
           </li>

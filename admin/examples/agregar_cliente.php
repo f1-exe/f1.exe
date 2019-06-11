@@ -2,8 +2,6 @@
 
 include 'funciones_admin/funciones.php';
 
-$contactos =  listarContactos();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -124,7 +122,7 @@ $contactos =  listarContactos();
          <!-- Navigation -->
          <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="./index.php">
+            <a class="nav-link" href="../index.php">
               <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
@@ -144,7 +142,7 @@ $contactos =  listarContactos();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="proyectos.php">
               <i class="ni ni-archive-2 text-orange"></i> Proyectos
             </a>
           </li>
@@ -154,7 +152,7 @@ $contactos =  listarContactos();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.php">
+            <a class="nav-link" href="#">
               <i class="ni ni-single-copy-04 text-info"></i> Generar Cotización
             </a>
           </li>
@@ -284,20 +282,20 @@ $contactos =  listarContactos();
                             </div>
                           </div>
                           <div class="card-body">
-                            <form>
+                            <form id="form_cliente" name="form_cliente" method="POST" enctype="multipart/form-data" action="">
                               <h6 class="heading-small text-muted mb-4">información del cliente</h6>
                               <div class="pl-lg-4">
                                 <div class="row">
                                   <div class="col-lg-6">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-username">Nombre Empresa</label>
-                                      <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Empresa Spa">
+                                      <input type="text" id="nombre_cliente" class="form-control form-control-alternative" placeholder="Empresa Spa">
                                     </div>
                                   </div>
                                   <div class="col-lg-6">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-email">Email contacto</label>
-                                      <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                                      <input type="email" id="email_cliente" class="form-control form-control-alternative" placeholder="jesse@example.com">
                                     </div>
                                   </div>
                                 </div>
@@ -305,13 +303,13 @@ $contactos =  listarContactos();
                                   <div class="col-lg-6">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-first-name">Teléfono</label>
-                                      <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="569 1234 5678">
+                                      <input type="text" id="telefono_cliente" class="form-control form-control-alternative" placeholder="569 1234 5678">
                                     </div>
                                   </div>
                                   <div class="col-lg-6">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-last-name">Nombre representante</label>
-                                      <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Jessica Rojas">
+                                      <input type="text" id="nombre_representante" class="form-control form-control-alternative" placeholder="Jessica Rojas">
                                     </div>
                                   </div>
                                 </div>
@@ -324,14 +322,14 @@ $contactos =  listarContactos();
                                   <div class="col-md-12">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-address">Logo de la empresa</label>
-                                      <input type="file" class="form-control form-control-alternative">
+                                      <input type="file" id="logo_empresa" class="form-control form-control-alternative">
                                     </div>
                                   </div>
                                 </div>
                               </div>
                               <div class="pl-lg-4">
                                 <div class="form-group">
-                                    <button class="btn btn-info">Guardar</button>  
+                                    <button id="btn_guardar" class="btn btn-info">Guardar</button>  
                                 </div>
                               </div>
                             </form>
@@ -376,6 +374,7 @@ $contactos =  listarContactos();
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.0.0"></script>
   <script src="js/logout.js"></script>
+  <script src="js/clientes/agregar_cliente.js"></script>
 </body>
 
 </html>

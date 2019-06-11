@@ -2,7 +2,7 @@
 
 include 'funciones_admin/funciones.php';
 
-$contactos =  listarContactos();
+$listarClientes =  listarClientes();
 
 ?>
 <!DOCTYPE html>
@@ -124,7 +124,7 @@ $contactos =  listarContactos();
          <!-- Navigation -->
          <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="./index.php">
+            <a class="nav-link" href="../index.php">
               <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
@@ -144,7 +144,7 @@ $contactos =  listarContactos();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="proyectos.php">
               <i class="ni ni-archive-2 text-orange"></i> Proyectos
             </a>
           </li>
@@ -154,7 +154,7 @@ $contactos =  listarContactos();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.php">
+            <a class="nav-link" href="#">
               <i class="ni ni-single-copy-04 text-info"></i> Generar Cotización
             </a>
           </li>
@@ -289,19 +289,21 @@ $contactos =  listarContactos();
                   </tr>
                 </thead>
                 <tbody>
+
+                <?php while($row =  mysqli_fetch_array($listarClientes)){?>
                   <tr>
                     <th scope="row">
                       <div class="media align-items-center">
-                        <a href="#" class="avatar rounded-circle mr-3">
-                          <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                        <a href="javascript:void()" class="avatar rounded-circle mr-3">
+                          <img alt="Logo cliente" src="img_clientes/<?php echo $row["logo_cliente"];?>">
                         </a>
                         <div class="media-body">
-                          <span class="mb-0 text-sm">Nombre cliente</span>
+                          <span class="mb-0 text-sm"><?php echo $row["nombre_cliente"];?></span>
                         </div>
                       </div>
                     </th>
                     <td>
-                      Ver perfil
+                      <a href="#" style="color:white;" onclick='modal("<?php echo $row["nombre_cliente"]?>",<?php echo $row["telefono_cliente"];?>,"<?php echo $row["nombre_representante"];?>","<?php echo $row["email_cliente"];?>","<?php echo $row["logo_cliente"];?>")'>Ver Perfil</a>
                     </td>
                     
                     <td>
@@ -315,6 +317,7 @@ $contactos =  listarContactos();
                       </div>
                     </td>
                   </tr>
+                <?php } ?>
                 </tbody>
               </table>
             </div>
@@ -382,6 +385,7 @@ $contactos =  listarContactos();
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.0.0"></script>
   <script src="js/logout.js"></script>
+  <script src="js/clientes/modal_perfil.js"></script>
 </body>
 
 </html>

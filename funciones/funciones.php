@@ -1,8 +1,6 @@
 <?php
 
-include 'conexion/BDconexion.php';
-
-
+include '../conexion/BDconexion.php';
 
 //reCaptcha
 function getCaptcha($secreKey){

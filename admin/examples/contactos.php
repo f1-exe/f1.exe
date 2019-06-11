@@ -129,45 +129,40 @@ $contactos =  listarContactos();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../examples/contactos.php">
+            <a class="nav-link" href="contactos.php">
               <i class="ni ni-bullet-list-67 text-red"></i> Contactos
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../examples/cotizaciones.php">
-              <i class="ni ni-bullet-list-67 text-red"></i> Cotizaciones
+            <a class="nav-link" href="cotizaciones.php">
+              <i class="ni ni-check-bold text-blue"></i> Cotizaciones
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="..examples/icons.php">
-              <i class="ni ni-planet text-blue"></i> Icons
+            <a class="nav-link" href="clientes.php">
+              <i class="ni ni-single-02 text-blue"></i> Clientes
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../examples/maps.php">
-              <i class="ni ni-pin-3 text-orange"></i> Maps
+            <a class="nav-link" href="proyectos.php">
+              <i class="ni ni-archive-2 text-orange"></i> Proyectos
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../examples/profile.php">
-              <i class="ni ni-single-02 text-yellow"></i> User profile
+            <a class="nav-link" href="#">
+              <i class="ni ni-ruler-pencil text-red"></i> Wiki
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../examples/tables.php">
-              <i class="ni ni-bullet-list-67 text-red"></i> Tables
+            <a class="nav-link" href="#">
+              <i class="ni ni-single-copy-04 text-info"></i> Generar Cotización
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../examples/login.php">
-              <i class="ni ni-key-25 text-info"></i> Login
+            <a class="nav-link" href="profile.php">
+              <i class="ni ni-circle-08 text-red"></i> Perfil de usuario
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../examples/register.php">
-              <i class="ni ni-circle-08 text-pink"></i> Register
-            </a>
-          </li>
+          </li> 
         </ul>
         <!-- Divider -->
         <hr class="my-3">
