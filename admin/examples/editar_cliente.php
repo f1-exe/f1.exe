@@ -1,8 +1,8 @@
 <?php 
-
 include 'funciones_admin/funciones.php';
 
-$contactos =  listarContactos();
+$id =  $_GET["id"];
+$row =  listarClientesPorId($id);
 
 ?>
 <!DOCTYPE html>
@@ -284,20 +284,20 @@ $contactos =  listarContactos();
                             </div>
                           </div>
                           <div class="card-body">
-                            <form>
+                            <form id="form_cliente" name="form_cliente" method="POST" enctype="multipart/form-data" action="">
                               <h6 class="heading-small text-muted mb-4">información del cliente</h6>
                               <div class="pl-lg-4">
                                 <div class="row">
                                   <div class="col-lg-6">
                                     <div class="form-group">
-                                      <label class="form-control-label" for="input-username">Nombre Empresa</label>
-                                      <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Empresa Spa">
+                                      <label class="form-control-label" for="input-username">Nombre Cliente</label>
+                                      <input type="text" id="nombre_cliente" class="form-control form-control-alternative" placeholder="Empresa Spa" value="<?php echo $row["nombre_cliente"];?>">
                                     </div>
                                   </div>
                                   <div class="col-lg-6">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-email">Email contacto</label>
-                                      <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                                      <input type="email" id="email_cliente" class="form-control form-control-alternative" placeholder="jesse@example.com" value="<?php echo $row["email_cliente"];?>">
                                     </div>
                                   </div>
                                 </div>
@@ -305,13 +305,13 @@ $contactos =  listarContactos();
                                   <div class="col-lg-6">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-first-name">Teléfono</label>
-                                      <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="569 1234 5678">
+                                      <input type="text" id="telefono_cliente" class="form-control form-control-alternative" placeholder="569 1234 5678" value="<?php echo $row["telefono_cliente"];?>">
                                     </div>
                                   </div>
                                   <div class="col-lg-6">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-last-name">Nombre representante</label>
-                                      <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Jessica Rojas">
+                                      <input type="text" id="nombre_representante" class="form-control form-control-alternative" placeholder="Jessica Rojas" value="<?php echo $row["nombre_representante"];?>">
                                     </div>
                                   </div>
                                 </div>
@@ -324,19 +324,20 @@ $contactos =  listarContactos();
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-address">Logo de la empresa</label>
-                                      <input type="file" class="form-control form-control-alternative">
+                                      <input id="logo_empresa" type="file" class="form-control form-control-alternative">
                                     </div>
                                   </div>
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                      <img  src="/" alt="imagen empresa" >
+                                      <img  src="img_clientes/<?php echo $row["logo_cliente"];?>" alt="imagen empresa" wdth="200" height="300">
                                     </div>
                                   </div>
                                 </div>
                               </div>
                               <div class="pl-lg-4">
                                 <div class="form-group">
-                                    <button class="btn btn-info">Guardar</button>  
+                                    <button id="btn_guardar" class="btn btn-info">Guardar</button>
+                                    <input type="hidden" name="id_cliente" id="id_cliente" value="<?php echo $row["id"];?>">  
                                 </div>
                               </div>
                             </form>
@@ -381,6 +382,7 @@ $contactos =  listarContactos();
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.0.0"></script>
   <script src="js/logout.js"></script>
+  <script src="js/clientes/editar_cliente.js"></script>
 </body>
 
 </html>

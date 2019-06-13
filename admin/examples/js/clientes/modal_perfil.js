@@ -10,7 +10,7 @@ function modal(nombre,telefono,representante,correo,logo){
             '<div class="col-md-5">Email: </div> <div class="col-md-7">'+correo+'</div>'+
          '</div>'+
          '</div>',
-        imageWidth: 400,
+        imageWidth: 300,
         imageHeight: 200,
         imageAlt: 'Logo cliente',
         animation: true

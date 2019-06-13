@@ -93,4 +93,40 @@ function validaUsuario($usuario){
     return $resp;
   }
 
+  //listar clientes por id
+  function listarClientesPorId($id_cliente){
+    global $conn;
+    $query =  "SELECT * FROM clientes WHERE id = ".$id_cliente."";
+    $resp =  mysqli_query($conn,$query);
+    $row = mysqli_fetch_array($resp);
+
+    return $row;
+  }
+
+  function editarClienteSinImagen($id_cliente,$nombre_cliente,$email_cliente,$telefono_cliente,$nombre_representante){
+    global $conn;
+    $query = "UPDATE clientes SET nombre_cliente = '".$nombre_cliente."',email_cliente =  '".$email_cliente."',telefono_cliente = ".$telefono_cliente.", nombre_representante = '".$nombre_representante."' WHERE id  =  ".$id_cliente."";
+    $resp =  mysqli_query($conn, $query);
+
+    if($resp){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  function editarClienteConImagen($id_cliente,$nombre_cliente,$email_cliente,$telefono_cliente,$nombre_representante,$logo_cliente){
+    global $conn;
+    $query = "UPDATE clientes SET nombre_cliente = '".$nombre_cliente."',email_cliente =  '".$email_cliente."',telefono_cliente = ".$telefono_cliente.", nombre_representante = '".$nombre_representante."', logo_cliente = '".$logo_cliente."' WHERE id  =  ".$id_cliente."";
+    $resp =  mysqli_query($conn, $query);
+
+    if($resp){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+
+
 ?>

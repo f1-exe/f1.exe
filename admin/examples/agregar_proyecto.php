@@ -2,7 +2,7 @@
 
 include 'funciones_admin/funciones.php';
 
-$listarClientes =  listarClientes();
+$clientes =  listarClientes();
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ $listarClientes =  listarClientes();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>F1.exe - Clientes | Panel de administración</title>
+  <title>F1.exe - Proyectos | Panel de administración</title>
   <!-- Favicon -->
   <link href="../assets/img/brand/favicon.ico" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -195,7 +195,7 @@ $listarClientes =  listarClientes();
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Clientes</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Proyectos</a>
         
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
@@ -251,13 +251,13 @@ $listarClientes =  listarClientes();
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Agregar</h5>
-                      <span class="h2 font-weight-bold mb-0">Cliente</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Volver</h5>
+                      <span class="h2 font-weight-bold mb-0">Proyectos</span>
                     </div>
                     <div class="col-auto">
-                        <a href="agregar_cliente.php"> 
-                            <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                <i class="fas fa-user-plus"></i>
+                        <a href="proyectos.php"> 
+                            <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                <i class="fas fa-list-ul"></i>
                             </div>
                         </a>
                     </div>
@@ -270,85 +270,93 @@ $listarClientes =  listarClientes();
         </div>
       </div>
     </div>
+    
     <!-- Page content -->
-    <div class="container-fluid mt--7">
-      <!-- Table -->
-      <div class="row">
-        <div class="col">
-        <div class="card bg-default shadow">
-            <div class="card-header bg-transparent border-0">
-              <h3 class="text-white mb-0">Clientes</h3>
-            </div>
-            <div class="table-responsive">
-              <table class="table align-items-center table-dark table-flush">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">Cliente</th>
-                    <th scope="col">Perfil</th>
-                    <th scope="col">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                <?php while($row =  mysqli_fetch_array($listarClientes)){?>
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <a href="javascript:void()" class="avatar rounded-circle mr-3">
-                          <img alt="Logo cliente" src="img_clientes/<?php echo $row["logo_cliente"];?>">
-                        </a>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo $row["nombre_cliente"];?></span>
+        <div class="container-fluid mt--7">
+            <div class="row">
+                    <div class="col-xl-12 order-xl-1">
+                        <div class="card bg-secondary shadow">
+                          <div class="card-header bg-white border-0">
+                            <div class="row align-items-center">
+                              <div class="col-8">
+                                <h3 class="mb-0">Agregar nuevo proyecto</h3>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <form id="form_cliente" name="form_cliente" method="POST" enctype="multipart/form-data" action="">
+                              <h6 class="heading-small text-muted mb-4">información del proyecto</h6>
+                              <div class="pl-lg-4">
+                                <div class="row">
+                                  <div class="col-lg-6">
+                                    <div class="form-group">
+                                      <label class="form-control-label" for="input-username">Nombre Poryecto</label>
+                                      <input type="text" id="nombre_proyecto" class="form-control form-control-alternative" placeholder="Proyecto 1">
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-6">
+                                    <div class="form-group">
+                                      <label class="form-control-label" for="input-email">Estado</label>
+                                      <select class="form-control form-control-alternative" id="estado_proyecto">
+                                        <option value="0">Seleccione</option>
+                                        <option value="1">En curso</option>
+                                        <option value="2">Pendiente</option>
+                                        <option value="3">Abandonado</option>
+                                        <option value="4">Finalizado</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-6">
+                                    <div class="form-group">
+                                      <label class="form-control-label" for="input-first-name">Fecha inicio</label>
+                                      <input type="date" id="fecha_inicio" class="form-control form-control-alternative">
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-6">
+                                    <div class="form-group">
+                                      <label class="form-control-label" for="input-last-name">Fecha termino</label>
+                                      <input type="date" id="fecha_termino" class="form-control form-control-alternative">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <hr class="my-4" />
+                              <!-- Address -->
+                              <h6 class="heading-small text-muted mb-4">Cliente</h6>
+                              <div class="pl-lg-4">
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label class="form-control-label" for="input-address">Nombre del cliente</label>
+                                      <select class="form-control form-control-alternative" id="estado_proyecto">
+                                        <option value="0">Seleccione</option>
+                                        <?php while($row =  mysqli_fetch_array($clientes)){?>
+                                            <option value="<?php $row["id"];?>"><?php echo  $row["nombre_cliente"];?></option>
+                                        <?php } ?>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="pl-lg-4">
+                                  <div class="form-group">
+                                      <label class="form-control-label">Comentarios del proyecto</label>
+                                      <textarea class="form-control form-control-alternative" name="comentario" id="comentario" cols="30" rows="10" placeholder="Entregue informacion importante o relevante de estre proyecto"></textarea>
+                                  </div>
+                              </div>
+                              <div class="pl-lg-4">
+                                <div class="form-group">
+                                    <button id="btn_guardar" class="btn btn-info">Guardar</button>  
+                                </div>
+                              </div>
+                            </form>
+                          </div>
                         </div>
-                      </div>
-                    </th>
-                    <td>
-                      <a href="#" style="color:white;" onclick='modal("<?php echo $row["nombre_cliente"]?>",<?php echo $row["telefono_cliente"];?>,"<?php echo $row["nombre_representante"];?>","<?php echo $row["email_cliente"];?>","<?php echo $row["logo_cliente"];?>")'>Ver Perfil</a>
-                    </td>
-                    
-                    <td>
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="editar_cliente.php?id=<?php echo $row["id"];?>">Editar Información</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                <?php } ?>
-                </tbody>
-              </table>
+                </div>
             </div>
-            <div class="card-footer py-4">
-              <nav aria-label="...">
-                <ul class="pagination justify-content-end mb-0">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">
-                      <i class="fas fa-angle-left"></i>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      <i class="fas fa-angle-right"></i>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
+        <!-- Page content -->
     
       <!-- Footer -->
       <footer class="footer">
@@ -385,7 +393,7 @@ $listarClientes =  listarClientes();
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.0.0"></script>
   <script src="js/logout.js"></script>
-  <script src="js/clientes/modal_perfil.js"></script>
+  <script src="js/clientes/agregar_cliente.js"></script>
 </body>
 
 </html>
