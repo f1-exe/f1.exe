@@ -2,7 +2,7 @@
 
 include 'funciones_admin/funciones.php';
 
-$contactos =  listarContactos();
+$proyectos =  listarProyectos();
 
 ?>
 <!DOCTYPE html>
@@ -286,50 +286,56 @@ $contactos =  listarContactos();
                     <th scope="col">Nombre</th>
                     <th scope="col">Cliente</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Cotizacion</th>
                     <th scope="col">Detalle</th>
                     <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Fase 1</span>
+                  <?php while($row =  mysqli_fetch_array($proyectos)){?>
+                    <tr>
+                      <th scope="row">
+                        <div class="media align-items-center">
+                          <div class="media-body">
+                            <span class="mb-0 text-sm"><?php echo $row["nombre_proyecto"];?></span>
+                          </div>
                         </div>
-                      </div>
-                    </th>
-                    <td>
-                      <div class="avatar-group">
-                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Felmat Seguridad">
-                          <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg" class="rounded-circle">
-                        </a>
-                      </div>
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i>Completado
-                      </span>
-                    </td>
-                    
-                    <td>
-                      <a href="#">Ver</a>
-                    </td>
-                    <td>
-                      <a href="#">Ver</a>
-                    </td>
-                    <td>
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="editar_proyecto.php">Editar</a>
+                      </th>
+                      <td>
+                        <div class="avatar-group">
+                          <a href="clientes.php" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="<?php echo getNombreCliente($row["id_cliente"]);?>">
+                            <img alt="Image placeholder" src="img_clientes/<?php echo getLogoCliente($row["id_cliente"]);?>" class="rounded-circle">
+                          </a>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
+                      </td>
+                      <td>
+                        <span class="badge badge-dot mr-4">
+                          <?php if($row["estado_proyecto"] == 1){ ?>
+                                  <i class="bg-info"></i>En curso
+                          <?php }else if($row["estado_proyecto"] == 2){ ?>
+                                  <i class="bg-warning"></i>Pendiente
+                          <?php }else if($row["estado_proyecto"] == 3){ ?>
+                                  <i class="bg-danger"></i>Abandonado
+                          <?php }else if($row["estado_proyecto"] == 4){ ?>
+                                  <i class="bg-success"></i>Finalizado
+                          <?php } ?>
+                        </span>
+                      </td>
+                      
+                      <td>
+                        <a style="color:white;" href="#" onclick='modal("<?php echo getLogoCliente($row["id_cliente"]);?>","<?php echo $row["nombre_proyecto"];?>","<?php echo $row["fecha_inicio"];?>","<?php echo $row["fecha_termino"];?>","<?php echo $row["comentario"];?>")'>Ver</a>
+                      </td>
+                      <td>
+                        <div class="dropdown">
+                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="editar_proyecto.php?id=<?php echo $row["id"];?>">Editar</a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  <?php } ?> 
                   
                 </tbody>
               </table>
@@ -399,6 +405,7 @@ $contactos =  listarContactos();
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.0.0"></script>
   <script src="js/logout.js"></script>
+  <script src="js/proyectos/detalle_proyecto.js"></script>
 </body>
 
 </html>

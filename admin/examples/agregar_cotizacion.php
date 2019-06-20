@@ -13,7 +13,7 @@ $clientes =  listarClientes();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>F1.exe - Proyectos | Panel de administración</title>
+  <title>F1.exe - Cotizaciones | Panel de administración</title>
   <!-- Favicon -->
   <link href="../assets/img/brand/favicon.ico" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -28,6 +28,16 @@ $clientes =  listarClientes();
 
   <!-- SWAL CDN -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.33.1/dist/sweetalert2.all.min.js"></script>
+
+  <style>
+    #detalle_cotizacion_sin_boleta{
+      display: none;
+    }
+
+    #detalle_cotizacion_con_boleta{
+      display:none;
+    }
+  </style>
 
 </head>
 
@@ -195,7 +205,7 @@ $clientes =  listarClientes();
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Proyectos</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Cotizaciones</a>
         
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
@@ -252,11 +262,11 @@ $clientes =  listarClientes();
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Volver</h5>
-                      <span class="h2 font-weight-bold mb-0">Proyectos</span>
+                      <span class="h2 font-weight-bold mb-0">Cotización</span>
                     </div>
                     <div class="col-auto">
-                        <a href="proyectos.php"> 
-                            <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                        <a href="cotizacion.php"> 
+                            <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
                                 <i class="fas fa-list-ul"></i>
                             </div>
                         </a>
@@ -279,73 +289,124 @@ $clientes =  listarClientes();
                           <div class="card-header bg-white border-0">
                             <div class="row align-items-center">
                               <div class="col-8">
-                                <h3 class="mb-0">Agregar nuevo proyecto</h3>
+                                <h3 class="mb-0">Agregar nueva cotización</h3>
                               </div>
                             </div>
                           </div>
                           <div class="card-body">
-                            <form id="form_proyecto" name="form_proyecto" method="POST" action="">
-                              <h6 class="heading-small text-muted mb-4">información del proyecto</h6>
+                            <form id="form_cotizacion" name="form_cotizacion" method="POST" enctype="multipart/form-data" action="">
+                              <h6 class="heading-small text-muted mb-4">información de la cotización</h6>
                               <div class="pl-lg-4">
                                 <div class="row">
-                                  <div class="col-lg-6">
-                                    <div class="form-group">
-                                      <label class="form-control-label" for="input-username">Nombre Poryecto</label>
-                                      <input type="text" id="nombre_proyecto" class="form-control form-control-alternative" placeholder="Proyecto 1">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-email">Empresa prestadora de servicios</label>
+                                            <input type="text" id="prestador_servicio" class="form-control form-control-alternative" value="F1.exe" readonly>
+                                        </div>
                                     </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                    <div class="form-group">
-                                      <label class="form-control-label" for="input-email">Estado</label>
-                                      <select class="form-control form-control-alternative" id="estado_proyecto">
-                                        <option value="0">Seleccione</option>
-                                        <option value="1">En curso</option>
-                                        <option value="2">Pendiente</option>
-                                        <option value="3">Abandonado</option>
-                                        <option value="4">Finalizado</option>
-                                      </select>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Empresa receptora de servicios</label>
+                                            <select class="form-control form-control-alternative" id="cliente">
+                                            <option value="0">Seleccione</option>
+                                            <?php while($row =  mysqli_fetch_array($clientes)){?>
+                                                <option value="<?php echo $row["nombre_cliente"];?>"><?php echo  $row["nombre_cliente"];?></option>
+                                            <?php } ?>
+                                            </select>
+                                        </div>
                                     </div>
-                                  </div>
+                                    <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Servicio</label>
+                                                <select class="form-control form-control-alternative" id="servicio">
+                                                    <option value="0">Seleccione</option>
+                                                    <option value="Desarrollo Web">Desarrollo Web</option>
+                                                    <option value="Audio Visual">Audio Visual</option>
+                                                    <option value="Gestion Web">Gestion Web</option>
+                                                    <option value="Diseño Digital">Diseño Digital</option>
+                                                </select>
+                                            </div>
+                                    </div>
+                                     <div class="col-lg-12">
+                                        <div class="form-group">
+                                              <label class="form-control-label">Se emitirá boleta?</label><br>
+                                              <input  type="radio" name="radio_boleta" id="radio_boleta_si" value="0">Si
+                                              <input  type="radio" name="radio_boleta" id="radio_boleta_no" value="1">No
+                                        </div>
+                                     </div>
                                 </div>
-                                <div class="row">
-                                  <div class="col-lg-6">
-                                    <div class="form-group">
-                                      <label class="form-control-label" for="input-first-name">Fecha inicio</label>
-                                      <input type="date" id="fecha_inicio" class="form-control form-control-alternative">
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                    <div class="form-group">
-                                      <label class="form-control-label" for="input-last-name">Fecha termino</label>
-                                      <input type="date" id="fecha_termino" class="form-control form-control-alternative">
-                                    </div>
-                                  </div>
+
+                                <hr class="my-4" />
+                              
+                                <div id="contenedor_cotizacion">
+                                    
                                 </div>
-                              </div>
+                            </div>
+
+                            <div class="pl-lg-4">
+                                <div class="form-group">
+                                    <button id="btn_agregar" class="btn btn-success">Agregar Item +</button>  
+                                    <button type="button" id="btn_listo" class="btn btn-warning">Listo! </button>  
+                                </div>                                
+                            </div>  
+                            
+                            <div id="detalle_cotizacion_sin_boleta">
+                                <hr class="my-4" />
+                                <h6 class="heading-small text-muted mb-4">Detalle de la cotización</h6>
+                                <div class="pl-lg-4">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label"></label>
+                                                <p class="form-control-label">Corresponde al monto líquido a pagar (sin boleta)</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" >Total</label>
+                                                <input type="text" id="total_cot_sin_boleta" name="total_cot_sin_boleta" class="form-control form-control-alternative"  readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+                            </div>
+
+                            <div id="detalle_cotizacion_con_boleta">
+                                <hr class="my-4" />
+                                <h6 class="heading-small text-muted mb-4">Detalle de la cotización</h6>
+                                <div class="pl-lg-4">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label"></label>
+                                                <p class="form-control-label">Corresponde al monto líquido sin el 10%</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Sub Total</label>
+                                                <input type="text" id="subtotal_cot_con_boleta" name="subtotal_cot_con_boleta" class="form-control form-control-alternative" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label"></label>
+                                                <p class="form-control-label">Corresponde al monto bruto por el cual se hará la boleta, este monto contiene el 10% que retendrá el empleador</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Total</label>
+                                                <input type="text" id="total_cot_con_boleta"  name="total_cot_con_boleta" class="form-control form-control-alternative"  readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+                            </div>
+
                               <hr class="my-4" />
-                              <!-- Address -->
-                              <h6 class="heading-small text-muted mb-4">Cliente</h6>
-                              <div class="pl-lg-4">
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group">
-                                      <label class="form-control-label" for="input-address">Nombre del cliente</label>
-                                      <select class="form-control form-control-alternative" id="id_cliente">
-                                        <option value="0">Seleccione</option>
-                                        <?php while($row =  mysqli_fetch_array($clientes)){?>
-                                            <option value="<?php echo $row["id"];?>"><?php echo  $row["nombre_cliente"];?></option>
-                                        <?php } ?>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="pl-lg-4">
-                                  <div class="form-group">
-                                      <label class="form-control-label">Comentarios del proyecto</label>
-                                      <textarea class="form-control form-control-alternative" name="comentario" id="comentario" cols="30" rows="10" placeholder="Entregue informacion importante o relevante de estre proyecto"></textarea>
-                                  </div>
-                              </div>
+                              
                               <div class="pl-lg-4">
                                 <div class="form-group">
                                     <button id="btn_guardar" class="btn btn-info">Guardar</button>  
@@ -393,7 +454,8 @@ $clientes =  listarClientes();
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.0.0"></script>
   <script src="js/logout.js"></script>
-  <script src="js/proyectos/agregar_proyecto.js"></script>
+  <script src="js/clientes/agregar_cliente.js"></script>
+  <script src="js/cotizaciones/agregar_fila.js"></script>
 </body>
 
 </html>

@@ -172,7 +172,7 @@ if(isset($_SESSION["session_usuario"]) || empty($_SESSION["session_usuario"]) ==
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/login.php">
+            <a class="nav-link" href="./examples/cotizacion.php">
               <i class="ni ni-single-copy-04 text-info"></i> Generar Cotización
             </a>
           </li>

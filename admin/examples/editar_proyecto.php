@@ -2,7 +2,9 @@
 
 include 'funciones_admin/funciones.php';
 
-$clientes =  listarClientes();
+$id_proyecto =  $_GET["id"];
+$proyectos =  listarProyectosPorId($id_proyecto);
+$listarClientes =  listarClientes();
 
 ?>
 <!DOCTYPE html>
@@ -291,7 +293,7 @@ $clientes =  listarClientes();
                                   <div class="col-lg-6">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-username">Nombre Poryecto</label>
-                                      <input type="text" id="nombre_proyecto" class="form-control form-control-alternative" placeholder="Proyecto 1">
+                                      <input type="text" id="nombre_proyecto" class="form-control form-control-alternative" placeholder="Proyecto 1" value="<?php echo $proyectos["nombre_proyecto"];?>">
                                     </div>
                                   </div>
                                   <div class="col-lg-6">
@@ -299,10 +301,27 @@ $clientes =  listarClientes();
                                       <label class="form-control-label" for="input-email">Estado</label>
                                       <select class="form-control form-control-alternative" id="estado_proyecto">
                                         <option value="0">Seleccione</option>
-                                        <option value="1">En curso</option>
-                                        <option value="2">Pendiente</option>
-                                        <option value="3">Abandonado</option>
-                                        <option value="4">Finalizado</option>
+                                        <?php if($proyectos["estado_proyecto"] == 1){ ?>
+                                          <option selected value="1">En curso</option>
+                                          <option value="2">Pendiente</option>
+                                          <option value="3">Abandonado</option>
+                                          <option value="4">Finalizado</option>
+                                        <?php }else if($proyectos["estado_proyecto"] == 2){ ?>
+                                          <option selected value="2">Pendiente</option>
+                                          <option value="1">En curso</option>
+                                          <option value="3">Abandonado</option>
+                                          <option value="4">Finalizado</option>
+                                        <?php }else if($proyectos["estado_proyecto"] == 3){ ?>
+                                          <option selected value="3">Abandonado</option>
+                                          <option value="1">En curso</option>
+                                          <option value="2">Pendiente</option>
+                                          <option value="4">Finalizado</option>
+                                        <?php }else if($proyectos["estado_proyecto"] == 4){ ?>  
+                                          <option selected value="4">Finalizado</option>
+                                          <option value="1">En curso</option>
+                                          <option value="2">Pendiente</option>
+                                          <option value="3">Abandonado</option>
+                                        <?php } ?>   
                                       </select>
                                     </div>
                                   </div>
@@ -311,13 +330,13 @@ $clientes =  listarClientes();
                                   <div class="col-lg-6">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-first-name">Fecha inicio</label>
-                                      <input type="date" id="fecha_inicio" class="form-control form-control-alternative">
+                                      <input type="date" id="fecha_inicio" class="form-control form-control-alternative" value="<?php echo $proyectos["fecha_inicio"];?>">
                                     </div>
                                   </div>
                                   <div class="col-lg-6">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-last-name">Fecha termino</label>
-                                      <input type="date" id="fecha_termino" class="form-control form-control-alternative">
+                                      <input type="date" id="fecha_termino" class="form-control form-control-alternative" value="<?php echo $proyectos["fecha_termino"];?>">
                                     </div>
                                   </div>
                                 </div>
@@ -330,10 +349,14 @@ $clientes =  listarClientes();
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label class="form-control-label" for="input-address">Nombre del cliente</label>
-                                      <select class="form-control form-control-alternative" id="estado_proyecto">
+                                      <select class="form-control form-control-alternative" id="id_cliente">
                                         <option value="0">Seleccione</option>
-                                        <?php while($row =  mysqli_fetch_array($clientes)){?>
-                                            <option value="<?php $row["id"];?>"><?php echo  $row["nombre_cliente"];?></option>
+                                        <?php while($row =  mysqli_fetch_array($listarClientes)){
+                                          if($proyectos["id_cliente"] == $row["id"]){ ?>
+                                            <option selected value="<?php echo $row["id"];?>"><?php echo  $row["nombre_cliente"];?></option>
+                                          <?php }else{ ?>
+                                            <option  value="<?php echo $row["id"];?>"><?php echo  $row["nombre_cliente"];?></option>
+                                          <?php } ?>
                                         <?php } ?>
                                       </select>
                                     </div>
@@ -343,12 +366,13 @@ $clientes =  listarClientes();
                               <div class="pl-lg-4">
                                   <div class="form-group">
                                       <label class="form-control-label">Comentarios del proyecto</label>
-                                      <textarea class="form-control form-control-alternative" name="comentario" id="comentario" cols="30" rows="10" placeholder="Entregue informacion importante o relevante de estre proyecto"></textarea>
+                                      <textarea class="form-control form-control-alternative" name="comentario" id="comentario" cols="30" rows="10" placeholder="Entregue informacion importante o relevante de estre proyecto"><?php echo $proyectos["comentario"];?></textarea>
                                   </div>
                               </div>
                               <div class="pl-lg-4">
                                 <div class="form-group">
-                                    <button id="btn_guardar" class="btn btn-info">Guardar</button>  
+                                    <button id="btn_guardar" class="btn btn-info">Guardar</button> 
+                                    <input type="hidden" name="id_proyecto" id="id_proyecto" value="<?php echo $proyectos["id"];?>"> 
                                 </div>
                               </div>
                             </form>
@@ -393,7 +417,7 @@ $clientes =  listarClientes();
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.0.0"></script>
   <script src="js/logout.js"></script>
-  <script src="js/clientes/agregar_cliente.js"></script>
+  <script src="js/proyectos/editar_proyecto.js"></script>
 </body>
 
 </html>

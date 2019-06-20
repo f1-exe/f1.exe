@@ -84,6 +84,27 @@ function validaUsuario($usuario){
 
   }
 
+  //obtener nombre cliente por id
+  function getNombreCliente($id){
+    global $conn;
+    $query = "SELECT nombre_cliente FROM clientes WHERE id  = ".$id."";
+    $resp =  mysqli_query($conn,$query);
+    $nombre =  mysqli_fetch_array($resp);
+
+    return $nombre["nombre_cliente"];
+
+  }
+
+  //obtener logo cliente por id 
+  function getLogoCliente($id){
+    global $conn;
+    $query = "SELECT logo_cliente FROM clientes WHERE id= ".$id."";
+    $resp = mysqli_query($conn,$query);
+    $logo = mysqli_fetch_array($resp);
+
+    return $logo["logo_cliente"];
+  }
+
   //listar clientes
   function listarClientes(){
     global $conn;
@@ -103,6 +124,7 @@ function validaUsuario($usuario){
     return $row;
   }
 
+  //funcion para editar los datos de un cliente cuando este ya tiene una imagen
   function editarClienteSinImagen($id_cliente,$nombre_cliente,$email_cliente,$telefono_cliente,$nombre_representante){
     global $conn;
     $query = "UPDATE clientes SET nombre_cliente = '".$nombre_cliente."',email_cliente =  '".$email_cliente."',telefono_cliente = ".$telefono_cliente.", nombre_representante = '".$nombre_representante."' WHERE id  =  ".$id_cliente."";
@@ -115,6 +137,7 @@ function validaUsuario($usuario){
     }
   }
 
+  //funcion para editar los datos de un cliente cuando no tiene imagen
   function editarClienteConImagen($id_cliente,$nombre_cliente,$email_cliente,$telefono_cliente,$nombre_representante,$logo_cliente){
     global $conn;
     $query = "UPDATE clientes SET nombre_cliente = '".$nombre_cliente."',email_cliente =  '".$email_cliente."',telefono_cliente = ".$telefono_cliente.", nombre_representante = '".$nombre_representante."', logo_cliente = '".$logo_cliente."' WHERE id  =  ".$id_cliente."";
@@ -126,6 +149,58 @@ function validaUsuario($usuario){
       return false;
     }
   }
+
+  //funcion para crear proyectos
+  function crearProyecto($nombre_proyecto,$estado_proyecto,$fecha_inicio,$fecha_termino,$id_cliente,$comentario){
+    global $conn;
+    $query = "INSERT INTO proyectos (id, nombre_proyecto, estado_proyecto, fecha_inicio, fecha_termino, id_cliente, comentario)
+              VALUES (NULL,'".$nombre_proyecto."',".$estado_proyecto.",'".$fecha_inicio."','".$fecha_termino."',".$id_cliente.",'".$comentario."')";
+    $resp =  mysqli_query($conn,$query);
+    
+    if($resp){
+      return true;
+    }else{
+      return false;
+    }
+    
+  }
+
+  //funcion para listar los proyectos
+  function listarProyectos(){
+    global $conn;
+    $query = "SELECT * FROM proyectos";
+    $resp =  mysqli_query($conn,$query);
+
+    return $resp;
+
+  }
+
+  //listar proyectos por id
+  function listarProyectosPorId($id_proyecto){
+    global $conn;
+    $query =  "SELECT * FROM proyectos WHERE id = ".$id_proyecto."";
+    $resp =  mysqli_query($conn,$query);
+    $row = mysqli_fetch_array($resp);
+
+    return $row;
+  }
+
+//editar proyectos
+function editarPoryecto($nombre_proyecto,$estado_proyecto,$fecha_inicio,$fecha_termino,$id_cliente,$comentario,$id_proyecto){
+  global $conn;
+  $query = "UPDATE proyectos SET nombre_proyecto = '".$nombre_proyecto."', estado_proyecto = ".$estado_proyecto.", fecha_inicio = '".$fecha_inicio."', fecha_termino = '".$fecha_termino."', id_cliente = ".$id_cliente.", comentario = '".$comentario."' WHERE id =  ".$id_proyecto."";
+  $resp =  mysqli_query($conn,$query);
+  
+
+  if($resp){
+    return true;
+  }else{
+    return false;
+  }
+
+}
+
+
 
 
 
