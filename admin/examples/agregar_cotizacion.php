@@ -310,7 +310,7 @@ $clientes =  listarClientes();
                                             <select class="form-control form-control-alternative" id="cliente">
                                             <option value="0">Seleccione</option>
                                             <?php while($row =  mysqli_fetch_array($clientes)){?>
-                                                <option value="<?php echo $row["nombre_cliente"];?>"><?php echo  $row["nombre_cliente"];?></option>
+                                                <option value="<?php echo $row["id"];?>"><?php echo  $row["nombre_cliente"];?></option>
                                             <?php } ?>
                                             </select>
                                         </div>
@@ -327,7 +327,15 @@ $clientes =  listarClientes();
                                                 </select>
                                             </div>
                                     </div>
-                                     <div class="col-lg-12">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                              <label class="form-control-label">Proyecto asociado</label><br>
+                                              <select class="form-control form-control-alternative" name="proyecto" id="proyecto">
+                                                <option value="0">Seleccione proyecto</option>
+                                              </select>
+                                        </div>
+                                     </div>
+                                     <div class="col-lg-3">
                                         <div class="form-group">
                                               <label class="form-control-label">Se emitirá boleta?</label><br>
                                               <input  type="radio" name="radio_boleta" id="radio_boleta_si" value="0">Si
@@ -409,7 +417,7 @@ $clientes =  listarClientes();
                               
                               <div class="pl-lg-4">
                                 <div class="form-group">
-                                    <button id="btn_guardar" class="btn btn-info">Guardar</button>  
+                                    <button type="button" id="btn_guardar" class="btn btn-info">Guardar</button>  
                                 </div>
                               </div>
                             </form>
@@ -454,8 +462,8 @@ $clientes =  listarClientes();
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.0.0"></script>
   <script src="js/logout.js"></script>
-  <script src="js/clientes/agregar_cliente.js"></script>
-  <script src="js/cotizaciones/agregar_fila.js"></script>
+  <script src="js/cotizaciones/agregar_cotizacion.js"></script>
+  <script src="js/cotizaciones/select_dependiente.js"></script>
 </body>
 
 </html>

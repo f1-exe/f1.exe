@@ -2,7 +2,7 @@
 
 include 'funciones_admin/funciones.php';
 
-$listarClientes =  listarClientes();
+$listarEncabezadoCotizacion =  listarEncabezadoCotizacion();
 
 ?>
 <!DOCTYPE html>
@@ -287,32 +287,39 @@ $listarClientes =  listarClientes();
                   <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Cliente</th>
+                    <th scope="col">Proyecto</th>
                     <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
 
-                <?php while($row =  mysqli_fetch_array($listarClientes)){?>
+                <?php while($row =  mysqli_fetch_array($listarEncabezadoCotizacion)){?>
                   <tr>
+                    <td>
+                      <?php echo $row["id"];?>
+                    </td>
                     <th scope="row">
                       <div class="media align-items-center">
                         <a href="javascript:void()" class="avatar rounded-circle mr-3">
-                          <img alt="Logo cliente" src="img_clientes/<?php echo $row["logo_cliente"];?>">
+                          <img alt="Logo cliente" src="img_clientes/<?php echo getLogoCliente($row["cliente"]);?>">
                         </a>
-                        
+                        <div class="media-body">
+                          <span class="mb-0 text-sm"><?php echo getNombreCliente($row["cliente"]);?></span>
+                        </div>
                       </div>
                     </th>
+                   
                     <td>
-                      nombre cliente 1
+                       <?php echo getNombreProyecto($row["id_proyecto"]); ?>
                     </td>
-                    
                     <td>
                       <div class="dropdown">
                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="fas fa-ellipsis-v"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="editar_cliente.php?id=<?php echo $row["id"];?>">Editar Información</a>
+                          <a class="dropdown-item" href="editar_cotizacion.php?id=<?php echo $row["id"];?>">Editar Información</a>
+                          <a class="dropdown-item" target="_blank" href="fpdf/cotizacion_pdf.php?id=<?php echo $row["id"];?>">Generar en PDF</a>
                         </div>
                       </div>
                     </td>

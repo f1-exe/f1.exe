@@ -185,6 +185,25 @@ function validaUsuario($usuario){
     return $row;
   }
 
+  //obtener nombre de proyecto por id
+  function getNombreProyecto($id_proyecto){
+    global $conn;
+    $query = "SELECT nombre_proyecto FROM proyectos WHERE id =  ".$id_proyecto."";
+    $resp = mysqli_query($conn,$query);
+    $nombre_proyecto = mysqli_fetch_array($resp);
+
+    return $nombre_proyecto["nombre_proyecto"];
+
+  }
+
+  function listarProyectosPorIdCliente($id_cliente){
+    global $conn;
+    $query =  "SELECT nombre_proyecto,id FROM proyectos WHERE id_cliente =  ".$id_cliente."";
+    $resp =  mysqli_query($conn, $query);
+  
+    return $resp;
+  }
+
 //editar proyectos
 function editarPoryecto($nombre_proyecto,$estado_proyecto,$fecha_inicio,$fecha_termino,$id_cliente,$comentario,$id_proyecto){
   global $conn;
@@ -200,6 +219,64 @@ function editarPoryecto($nombre_proyecto,$estado_proyecto,$fecha_inicio,$fecha_t
 
 }
 
+//crear encabezado cotizacion
+function crearEncabezadoCotizacion($prestador_servicio,$id_cliente,$servicio,$boleta,$sub_total,$total,$total_sin_boleta,$id_proyecto){
+  global $conn;
+  $query = "INSERT INTO encabezado_cotizacion (id,prestador_servicio,cliente,servicio,boleta,sub_total,total,total_sin_boleta,id_proyecto)
+            VALUES (NULL,'".$prestador_servicio."', '".$id_cliente."','".$servicio."',".$boleta.",'".$sub_total."','".$total."','".$total_sin_boleta."',".$id_proyecto.")";
+  $resp = mysqli_query($conn,$query);
+  
+  if($resp){
+    return  mysqli_insert_id($conn);
+  }else{
+    return false;
+  }
+
+}
+
+//crear detalle cotizacion
+function crearDetalleCotizacion($id_encabezado_cotizacion,$num_funcionalidad,$funcionalidad,$valor,$descripcion){
+  global $conn;
+  $query = "INSERT INTO detalle_cotizacion (id,id_encabezado_cotizacion,num_funcionalidad,funcionalidad,valor,descripcion)
+            VALUES (NULL,".$id_encabezado_cotizacion.",".$num_funcionalidad.",'".$funcionalidad."','".$valor."','".$descripcion."')";
+  $resp =  mysqli_query($conn,$query);
+
+  if($resp){
+    return true;
+  }else{
+    return false;
+  }
+
+}
+
+
+//listar encabezado cotizacion
+function listarEncabezadoCotizacion(){
+  global $conn;
+  $query =  "SELECT * FROM encabezado_cotizacion";
+  $resp =  mysqli_query($conn,$query);
+  
+  return $resp;
+}
+
+//listar encabezado cotizacion por id
+function listarEncabezadoCotizacionPorId($id_encabezado_cotizacion){
+  global $conn;
+  $query =  "SELECT * FROM encabezado_cotizacion WHERE id =  ".$id_encabezado_cotizacion."";
+  $resp =  mysqli_query($conn,$query);
+  $row  = mysqli_fetch_array($resp);
+  
+  return $row;
+}
+
+//listar detalle cotizacion
+function listarDetalleCotizacion($id_encabezado_cotizacion){
+  global $conn;
+  $query =  "SELECT * FROM detalle_cotizacion WHERE id_encabezado_cotizacion =  ".$id_encabezado_cotizacion."";
+  $resp =  mysqli_query($conn,$query);
+  
+  return $resp;
+}
 
 
 
