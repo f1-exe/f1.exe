@@ -154,7 +154,7 @@ $cotizaciones =  listarCotizaciones();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="cotizacion.php">
               <i class="ni ni-single-copy-04 text-info"></i> Generar Cotización
             </a>
           </li>
