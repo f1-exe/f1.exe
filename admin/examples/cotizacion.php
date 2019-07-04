@@ -151,7 +151,7 @@ $listarEncabezadoCotizacion =  listarEncabezadoCotizacion();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="wiki.php">
               <i class="ni ni-ruler-pencil text-red"></i> Wiki
             </a>
           </li>
@@ -318,7 +318,6 @@ $listarEncabezadoCotizacion =  listarEncabezadoCotizacion();
                           <i class="fas fa-ellipsis-v"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="editar_cotizacion.php?id=<?php echo $row["id"];?>">Editar Información</a>
                           <a class="dropdown-item" target="_blank" href="fpdf/cotizacion_pdf.php?id=<?php echo $row["id"];?>">Generar en PDF</a>
                         </div>
                       </div>

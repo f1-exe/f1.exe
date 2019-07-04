@@ -151,7 +151,7 @@ $listarClientes =  listarClientes();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="wiki.php">
               <i class="ni ni-ruler-pencil text-red"></i> Wiki
             </a>
           </li>

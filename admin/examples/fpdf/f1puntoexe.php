@@ -296,7 +296,7 @@ function addEcheance( $date )
 	$this->Line( $r1, $mid, $r2, $mid);
 	$this->SetXY( $r1 + ($r2 - $r1)/2 - 5 , $y1+1 );
 	$this->SetFont( "Arial", "B", 10);
-	$this->Cell(10,4, "FCH DE VENCIMIEN.", 0, 0, "C");
+	$this->Cell(10,4, "CANT ITEMS", 0, 0, "C");
 	$this->SetXY( $r1 + ($r2-$r1)/2 - 5 , $y1 + 5 );
 	$this->SetFont( "Arial", "", 10);
 	$this->Cell(10,5,$date, 0,0, "C");
@@ -323,13 +323,13 @@ function addNumTVA($tva)
 function addReference($ref)
 {
 	$this->SetFont( "Arial", "", 10);
-	$length = $this->GetStringWidth( "R�f�rences : " . $ref );
+	$length = $this->GetStringWidth( utf8_decode($ref) );
 	$r1  = 10;
 	$r2  = $r1 + $length;
 	$y1  = 92;
 	$y2  = $y1+5;
 	$this->SetXY( $r1 , $y1 );
-	$this->Cell($length,4, "R�f�rences : " . $ref);
+	$this->Cell($length,4, utf8_decode($ref));
 }
 
 function addCols( $tab )

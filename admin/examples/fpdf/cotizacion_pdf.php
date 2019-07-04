@@ -13,6 +13,15 @@ $row_cliente = listarClientesPorId($row["cliente"]);
 
 require('f1puntoexe.php');
 
+
+$cant_reqs = 0;
+while($x  = mysqli_fetch_array($detalleCotizacion)){
+
+    if($x["num_funcionalidad"]!=NULL){
+        $cant_reqs = $cant_reqs+1;
+    } 
+}
+
 //transformaciones
 $boleta = "";
 
@@ -36,9 +45,9 @@ $pdf->addClient("CL0".$row["cliente"]);
 $pdf->addPageNumber("1");
 $pdf->addClientAdresse("Sres.\n".$row_cliente["nombre_cliente"]."\n"."Email: ".$row_cliente["email_cliente"]."\n"."Tel: ".$row_cliente["telefono_cliente"]."");
 $pdf->addReglement($boleta);
-$pdf->addEcheance("17/06/2019");
+$pdf->addEcheance($cant_reqs);
 $pdf->addNumTVA(utf8_decode(getNombreProyecto($row["id_proyecto"])));
-$pdf->addReference("Devis ... du ....");
+$pdf->addReference("*La cotización puede pagarse en cuotas y montos pactados a mutuo acuerdo");
 $cols=array( "ITEM"    => 18,
              "FUNCIONALIDAD"  => 42,
              "DESCRIPCION"     => 110,
@@ -53,6 +62,9 @@ $pdf->addLineFormat($cols);
 
 $y    = 109;
 
+//detalle de cotizacion
+$detalleCotizacion =  listarDetalleCotizacion($_GET["id"]);
+
 while($row_detalle =  mysqli_fetch_array($detalleCotizacion)){
 
     $line = array( "ITEM"    => "REF".$row_detalle["num_funcionalidad"],
@@ -60,7 +72,7 @@ while($row_detalle =  mysqli_fetch_array($detalleCotizacion)){
                "DESCRIPCION"     => utf8_decode($row_detalle["descripcion"]),
                "VALOR"      => "$".$row_detalle["valor"]);
 	$size = $pdf->addLine( $y, $line );
-	$y   += $size + 5;
+    $y   += $size + 5;
   
 }
 

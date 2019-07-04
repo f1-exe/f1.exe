@@ -278,6 +278,41 @@ function listarDetalleCotizacion($id_encabezado_cotizacion){
   return $resp;
 }
 
+//crear wiki
+function crearWiki($cliente, $tema, $descripcion){
+  global $conn;
+  $query = "INSERT INTO wiki (id,id_cliente,tema,descripcion) VALUES (NULL,".$cliente.",'".$tema."','".$descripcion."')";
+  $resp =  mysqli_query($conn,$query);
+
+  if($resp){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+//listar wiki por id cliente
+function listarWikiPorIdCliente($id_cliente){
+  global $conn;
+  $query =  "SELECT * FROM wiki WHERE id_cliente =  ".$id_cliente."";
+  $resp =  mysqli_query($conn,$query);
+
+  return $resp;
+}
+
+//editar wiki 
+function editarWiki($id_cliente,$tema,$descripcion){
+  global $conn;
+  $query =  "UPDATE wiki SET id_cliente = ".$id_cliente.", tema = '".$tema."', descripcion = '".$descripcion."' WHERE id_cliente =  ".$id_cliente."";
+  $resp =  mysqli_query($conn,$query);
+
+  if($resp){
+    return true;
+  }else{
+    return false;
+  }
+}
+
 
 
 
