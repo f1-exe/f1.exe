@@ -2,9 +2,9 @@
 
 include 'funciones_admin/funciones.php';
 
-$id_cliente =  $_GET["id"];
+$id_wiki =  $_GET["id"];
 $clientes =  listarClientes();
-$listarWiki = mysqli_fetch_array(listarWikiPorIdCliente($id_cliente));
+$listar_wiki = mysqli_fetch_array(listarWikiPorIdWiki($id_wiki));
 
 ?>
 <!DOCTYPE html>
@@ -284,7 +284,7 @@ $listarWiki = mysqli_fetch_array(listarWikiPorIdCliente($id_cliente));
                           <div class="card-header bg-white border-0">
                             <div class="row align-items-center">
                               <div class="col-8">
-                                <h3 class="mb-0">Editar la info de la wiki</h3>
+                                <h3 class="mb-0">Agregar nueva info</h3>
                               </div>
                             </div>
                           </div>
@@ -299,11 +299,11 @@ $listarWiki = mysqli_fetch_array(listarWikiPorIdCliente($id_cliente));
                                             <select class="form-control form-control-alternative" id="cliente">
                                             <option value="0">Seleccione</option>
                                             <?php while($row =  mysqli_fetch_array($clientes)){?>
-                                                <?php if($row["id"] == $listarWiki["id_cliente"]){ ?>
+                                                <?php if($listar_wiki["id_cliente"]==$row["id"]){?>
                                                     <option selected value="<?php echo $row["id"];?>"><?php echo  $row["nombre_cliente"];?></option>
                                                 <?php }else{ ?>
                                                     <option value="<?php echo $row["id"];?>"><?php echo  $row["nombre_cliente"];?></option>
-                                                <?php } ?>
+                                                <?php } ?>    
                                             <?php } ?>
                                             </select>
                                         </div>
@@ -311,14 +311,14 @@ $listarWiki = mysqli_fetch_array(listarWikiPorIdCliente($id_cliente));
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label">Indique Tema</label>
-                                            <input type="text" name="tema" id="tema" class="form-control form-control-alternative" placeholder="Cuentas de correo" value="<?php echo $listarWiki["tema"];?>">
+                                            <input type="text" name="tema" id="tema" class="form-control form-control-alternative" placeholder="Cuentas de correo" value="<?php echo $listar_wiki["tema"];?>">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label class="form-control-label">Ingrese la información</label>
-                                            <textarea name="descripcion" id="descripcion" cols="30" rows="10"><?php echo $listarWiki["descripcion"];?></textarea>
+                                                <label class="form-control-label">Ingrese la información</label>
+                                                <textarea name="descripcion" id="descripcion" cols="30" rows="10"><?php echo $listar_wiki["descripcion"];?></textarea>
                                         </div>
                                     </div>
                                     
@@ -331,6 +331,7 @@ $listarWiki = mysqli_fetch_array(listarWikiPorIdCliente($id_cliente));
                               <div class="pl-lg-4">
                                 <div class="form-group">
                                     <button type="button" id="btn_guardar" class="btn btn-info">Guardar</button>  
+                                    <input type="hidden" name="id_wiki" id="id_wiki" value="<?php echo $listar_wiki["id"];?>">
                                 </div>
                               </div>
                             </form>

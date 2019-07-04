@@ -167,7 +167,7 @@ if(isset($_SESSION["session_usuario"]) || empty($_SESSION["session_usuario"]) ==
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/#">
+            <a class="nav-link" href="./examples/wiki.php">
               <i class="ni ni-ruler-pencil text-red"></i> Wiki
             </a>
           </li>

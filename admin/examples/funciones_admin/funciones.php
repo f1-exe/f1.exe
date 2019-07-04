@@ -301,9 +301,9 @@ function listarWikiPorIdCliente($id_cliente){
 }
 
 //editar wiki 
-function editarWiki($id_cliente,$tema,$descripcion){
+function editarWiki($id_cliente,$tema,$descripcion,$id_wiki){
   global $conn;
-  $query =  "UPDATE wiki SET id_cliente = ".$id_cliente.", tema = '".$tema."', descripcion = '".$descripcion."' WHERE id_cliente =  ".$id_cliente."";
+  $query =  "UPDATE wiki SET id_cliente = ".$id_cliente.", tema = '".$tema."', descripcion = '".$descripcion."' WHERE id=  ".$id_wiki."";
   $resp =  mysqli_query($conn,$query);
 
   if($resp){
@@ -312,6 +312,17 @@ function editarWiki($id_cliente,$tema,$descripcion){
     return false;
   }
 }
+
+//listar wiki por id wiki 
+function listarWikiPorIdWiki($id_wiki){
+  global $conn;
+  $query =  "SELECT * FROM wiki WHERE id = ".$id_wiki."";
+  $resp =  mysqli_query($conn,$query);
+
+  return $resp;
+}
+
+
 
 
 

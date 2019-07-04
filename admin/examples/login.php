@@ -120,7 +120,7 @@
               <div class="text-center text-muted mb-4">
                 <small>O ingresa tus credenciales de logueo</small>
               </div>
-              <form role="form" method="POST">
+              <form  method="POST" name="form_login" id="form_login" action="">
                 <div class="form-group mb-3">
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
@@ -144,7 +144,7 @@
                   </label>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4" id="loginUsuario">Ingresar</button>
+                  <button type="submit" class="btn btn-primary my-4" id="loginUsuario">Ingresar</button>
                 </div>
               </form>
             </div>

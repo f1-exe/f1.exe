@@ -2,7 +2,8 @@
 
 include 'funciones_admin/funciones.php';
 
-$listarClientes =  listarClientes();
+$id_cliente =  $_GET["id"];
+$listarWiki = listarWikiPorIdCliente($id_cliente);
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +14,7 @@ $listarClientes =  listarClientes();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>F1.exe - Wiki | Panel de administración</title>
+  <title>F1.exe - Cotizaciones | Panel de administración</title>
   <!-- Favicon -->
   <link href="../assets/img/brand/favicon.ico" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -28,9 +29,6 @@ $listarClientes =  listarClientes();
 
   <!-- SWAL CDN -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.33.1/dist/sweetalert2.all.min.js"></script>
-
-
-
 </head>
 
 <body>
@@ -197,7 +195,7 @@ $listarClientes =  listarClientes();
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Wiki</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Cotizaciones</a>
         
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
@@ -253,13 +251,13 @@ $listarClientes =  listarClientes();
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Agregar</h5>
-                      <span class="h2 font-weight-bold mb-0">Wiki</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Volver</h5>
+                      <span class="h2 font-weight-bold mb-0">Wikis</span>
                     </div>
                     <div class="col-auto">
-                        <a href="agregar_wiki.php"> 
+                        <a href="wiki.php"> 
                             <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                <i class="fas fa-address-card"></i>
+                                <i class="fas fa-list-ul"></i>
                             </div>
                         </a>
                     </div>
@@ -272,89 +270,40 @@ $listarClientes =  listarClientes();
         </div>
       </div>
     </div>
+    
     <!-- Page content -->
-    <div class="container-fluid mt--7">
-      <!-- Table -->
-      <div class="row">
-        <div class="col">
-        <div class="card bg-default shadow">
-            <div class="card-header bg-transparent border-0">
-              <h3 class="text-white mb-0">Wiki por cliente</h3>
-            </div>
-            <div class="table-responsive">
-              <table class="table align-items-center table-dark table-flush">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Cliente</th>
-                    <th scope="col">Wiki</th>
-                    <th scope="col">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                <?php while($row =  mysqli_fetch_array($listarClientes)){?>
-                  <tr>
-                    <td>
-                      <?php echo $row["id"];?>
-                    </td>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <a href="javascript:void()" class="avatar rounded-circle mr-3">
-                          <img alt="Logo cliente" src="img_clientes/<?php echo $row["logo_cliente"];?>">
-                        </a>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo $row["nombre_cliente"];?></span>
+        <div class="container-fluid mt--7">
+            <div class="row">
+                    <div class="col-xl-12 order-xl-1">
+                        <div class="card bg-secondary shadow">
+                          <div class="card-header bg-white border-0">
+                            <div class="row align-items-center">
+                              <div class="col-8">
+                                <h3 class="mb-0">Recuerda que estas editando la wiki de: <u><?php echo getNombreCliente($id_cliente);?></u></h3>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <form id="form_wiki" name="form_wiki" method="POST" enctype="multipart/form-data" action="">
+                              <h6 class="heading-small text-muted mb-4">Selecciona el tema de la wiki que deseas editar</h6>
+                              <div class="pl-lg-4">
+                                <div class="row">
+                                      <?php while($row_wiki =  mysqli_fetch_array($listarWiki)){ ?>
+                                        <div class="col-lg-4">
+                                          <button id="btn_tema_<?php echo $row_wiki["id"];?>" onclick="obtenerIdWiki(<?php echo $row_wiki["id"];?>)" value="<?php echo $row_wiki["id"];?>" class="btn btn-danger btn-block" type="button"><?php echo $row_wiki["tema"];?></button>
+                                          <br>
+                                        </div>
+                                        
+                                      <?php } ?>
+                                </div>
+                               
+                            </div>
+                            </form>
+                          </div>
                         </div>
-                      </div>
-                    </th>
-                   
-                    <td>
-                       <a href="ver_wiki.php?id_cli=<?php echo $row["id"];?>">Ver wiki</a>
-                    </td>
-                    <td>
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="pre_editar_wiki.php?id=<?php echo $row["id"];?>">Editar wiki</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                <?php } ?>
-                </tbody>
-              </table>
+                </div>
             </div>
-            <div class="card-footer py-4">
-              <nav aria-label="...">
-                <ul class="pagination justify-content-end mb-0">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">
-                      <i class="fas fa-angle-left"></i>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      <i class="fas fa-angle-right"></i>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
+        <!-- Page content -->
     
       <!-- Footer -->
       <footer class="footer">
@@ -391,6 +340,7 @@ $listarClientes =  listarClientes();
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.0.0"></script>
   <script src="js/logout.js"></script>
+  <script src="js/wiki/pre_editar_wiki.js"></script>
 </body>
 
 </html>

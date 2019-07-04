@@ -1,6 +1,7 @@
 $("#btn_guardar").click(function (e) {
     e.preventDefault();
 
+    var id_wiki = document.getElementById("id_wiki").value;
     var cliente = document.getElementById("cliente").value;
     var tema = document.getElementById("tema").value;
     var descripcion = CKEDITOR.instances.descripcion.getData(); //asi se obtiene la info del txtarea ckeditor
@@ -27,6 +28,7 @@ $("#btn_guardar").click(function (e) {
         return false;
     }
 
+    dataForm.append('id_wiki', id_wiki);
     dataForm.append('cliente', cliente);
     dataForm.append('tema', tema);
     dataForm.append('descripcion', descripcion);    
@@ -37,7 +39,10 @@ $("#btn_guardar").click(function (e) {
         data: dataForm,
         success: function (data) {
             if(data === "Se ha editado la wiki con exito"){
-                MensajeFinal(data+", Puede continuar agregando info o ir a la lista de wikis");
+                MensajeFinal(data+", será dirigido a la lista de wikis");
+                setTimeout(function nada() {
+                    window.location.replace("wiki.php");
+                  }, 2500);
             }else{
                 MensajeAlerta(data+", Ha ocurrido un error");
             }

@@ -31,17 +31,6 @@ $clientes =  listarClientes();
 
   <!--CKEDITOR JS-->
   <script src="ckeditor/ckeditor.js"></script>
-
-  <style>
-    #detalle_cotizacion_sin_boleta{
-      display: none;
-    }
-
-    #detalle_cotizacion_con_boleta{
-      display:none;
-    }
-  </style>
-
 </head>
 
 <body>
